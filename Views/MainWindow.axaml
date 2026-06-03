@@ -1,0 +1,44 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="PasswordResetBruteForce.Views.MainWindow"
+    Title="Password Reset Brute Force"
+    Width="800"
+    Height="600">
+
+    <StackPanel Margin="20" Spacing="10">
+
+    <Button Content="Generate Password"
+            Command="{Binding GeneratePasswordCommand}" />
+
+    <TextBox Text="{Binding GeneratedPassword}"
+             IsReadOnly="True"/>
+
+    <TextBox Text="{Binding PasswordHash}"
+             IsReadOnly="True"/>
+
+    <StackPanel Orientation="Horizontal">
+        <RadioButton Content="Single Thread"
+                     IsChecked="{Binding IsSingleThread}" />
+
+        <RadioButton Content="Multi Thread"
+                     IsChecked="{Binding IsMultiThread}" />
+    </StackPanel>
+
+    <Button Content="Start"
+            Command="{Binding StartAttackCommand}" />
+
+    <Button Content="Stop"
+            Command="{Binding StopAttackCommand}" />
+
+    <ProgressBar Minimum="0"
+                 Maximum="100"
+                 Value="{Binding Progress}" />
+
+    <TextBlock Text="{Binding ElapsedTime}" />
+
+    <TextBlock Text="{Binding FoundPassword}" />
+
+    </StackPanel>
+
+</Window>

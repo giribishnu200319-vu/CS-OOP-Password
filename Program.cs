@@ -1,24 +1,30 @@
-﻿using Avalonia;
-using System;
+﻿using System;
+using Avalonia;
 
-namespace password;
-
-class Program
+namespace password
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
-    [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    /// <summary>
+    /// Application entry point.
+    /// This is Stage 5 of the development - Application startup.
+    /// </summary>
+    internal class Program
+    {
+        /// <summary>
+        /// Main entry point for the application.
+        /// </summary>
+        [STAThread]
+        public static void Main(string[] args)
+        {
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+        }
 
-    // Avalonia configuration, don't remove; also used by visual designer.
-    public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-#if DEBUG
-            .WithDeveloperTools()
-#endif
-            .WithInterFont()
-            .LogToTrace();
+        /// <summary>
+        /// Builds the Avalonia application with proper configuration.
+        /// </summary>
+        public static AppBuilder BuildAvaloniaApp() =>
+            AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .WithInterFont()
+                .LogToTrace();
+    }
 }

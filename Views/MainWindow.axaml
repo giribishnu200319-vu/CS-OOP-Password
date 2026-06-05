@@ -1,44 +1,61 @@
-<Window
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Class="PasswordResetBruteForce.Views.MainWindow"
-    Title="Password Reset Brute Force"
-    Width="800"
-    Height="600">
-
-    <StackPanel Margin="20" Spacing="10">
-
-    <Button Content="Generate Password"
-            Command="{Binding GeneratePasswordCommand}" />
-
-    <TextBox Text="{Binding GeneratedPassword}"
-             IsReadOnly="True"/>
-
-    <TextBox Text="{Binding PasswordHash}"
-             IsReadOnly="True"/>
-
-    <StackPanel Orientation="Horizontal">
-        <RadioButton Content="Single Thread"
-                     IsChecked="{Binding IsSingleThread}" />
-
-        <RadioButton Content="Multi Thread"
-                     IsChecked="{Binding IsMultiThread}" />
-    </StackPanel>
-
-    <Button Content="Start"
-            Command="{Binding StartAttackCommand}" />
-
-    <Button Content="Stop"
-            Command="{Binding StopAttackCommand}" />
-
-    <ProgressBar Minimum="0"
-                 Maximum="100"
-                 Value="{Binding Progress}" />
-
-    <TextBlock Text="{Binding ElapsedTime}" />
-
-    <TextBlock Text="{Binding FoundPassword}" />
-
-    </StackPanel>
-
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="password.Views.MainWindow"
+        Title="Brute Force Password Cracker"
+        Width="900" Height="700">
+    
+    <ScrollViewer>
+        <StackPanel Spacing="10" Margin="20">
+            
+            <!-- Header -->
+            <TextBlock Text="Brute Force Password Cracker" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="Educational Application" FontSize="12"/>
+            
+            <Rectangle Height="2" Fill="Gray"/>
+            
+            <!-- Password Section -->
+            <TextBlock Text="Password Generation" FontSize="14" FontWeight="Bold" Margin="0,10,0,5"/>
+            
+            <TextBlock Text="Current Password:"/>
+            <TextBox Name="PasswordTextBox" IsReadOnly="True" Height="40" Margin="0,5,0,0"/>
+            
+            <TextBlock Text="Target Hash:" Margin="0,10,0,0"/>
+            <TextBox Name="HashTextBox" IsReadOnly="True" Height="60" Margin="0,5,0,0" TextWrapping="Wrap"/>
+            
+            <Button Name="GenerateButton" Content="Generate New Password" Padding="15,10" Margin="0,10,0,0" Click="GeneratePasswordClick"/>
+            
+            <Rectangle Height="2" Fill="Gray" Margin="0,10,0,10"/>
+            
+            <!-- Attack Section -->
+            <TextBlock Text="Attack Configuration" FontSize="14" FontWeight="Bold"/>
+            
+            <TextBlock Text="Execution Mode:" Margin="0,10,0,5"/>
+            <StackPanel Spacing="5" Margin="10,0,0,0">
+                <RadioButton Name="MultiThreadRadio" Content="Multi-Threaded"/>
+            </StackPanel>
+            
+            <!-- Buttons -->
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,15,0,0">
+                <Button Name="StartButton" Content="Start Attack" Padding="15,10" Click="StartBruteForceClick"/>
+                <Button Name="StopButton" Content="Stop Attack" Padding="15,10" Click="StopBruteForceClick"/>
+            </StackPanel>
+            
+            <!-- Progress Section -->
+            <TextBlock Text="Progress:" FontWeight="Bold" Margin="0,15,0,5"/>
+            <ProgressBar Name="ProgressBar" Maximum="100" Height="25" Margin="0,0,0,0"/>
+            <TextBlock Name="ProgressText" Margin="0,5,0,0"/>
+            
+            <!-- Timer Section -->
+            <TextBlock Text="Elapsed Time:" FontWeight="Bold" Margin="0,15,0,5"/>
+            <TextBlock Name="ElapsedTimeText" FontSize="18" FontWeight="Bold" Foreground="Red"/>
+            
+            <!-- Status Section -->
+            <TextBlock Text="Status:" FontWeight="Bold" Margin="0,15,0,5"/>
+            <TextBlock Name="StatusText" TextWrapping="Wrap" MinHeight="40"/>
+            
+            <!-- Results Section -->
+            <TextBlock Text="Results:" FontWeight="Bold" Margin="0,15,0,5"/>
+            <TextBox Name="ResultsTextBox" IsReadOnly="True" Height="200" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

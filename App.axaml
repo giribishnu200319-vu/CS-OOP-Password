@@ -1,10 +1,11 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="password.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             x:Class="password.App">
+    
+    <Application.Resources>
+    </Application.Resources>
 
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
     </Application.Styles>
 </Application>

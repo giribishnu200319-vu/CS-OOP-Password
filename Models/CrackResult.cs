@@ -45,9 +45,7 @@ namespace password.Models
                     return 0;
                 return TotalAttempts / ElapsedTime.TotalSeconds;
             }
-        }
-
-                public string GetPerformanceReport()
+        }                public string GetPerformanceReport()
         {
             return $"Attempts: {TotalAttempts}, Time: {ElapsedTime.TotalSeconds:F2}s, Speed: {AttemptsPerSecond:F0} attempts/sec, Threads: {ThreadsUsed}";
         }

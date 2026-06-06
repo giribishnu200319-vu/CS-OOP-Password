@@ -12,7 +12,7 @@ namespace password.Models
     /// </summary>
     public class BruteForceGenerator
     {
-        private const string Characters = "abcdefghijklmnopqrstuvwxyz";
+        private const string Characters = "abcdefghijklmnopqrstuvwxyz0123456789";
         private const int MinimumLength = 1;
         private const int MaximumLength = 4;
 

@@ -31,6 +31,7 @@
             
             <TextBlock Text="Execution Mode:" Margin="0,10,0,5"/>
             <StackPanel Spacing="5" Margin="10,0,0,0">
+                <RadioButton Name="SingleThreadRadio" Content="Single-Threaded (Baseline)"/>
                 <RadioButton Name="MultiThreadRadio" Content="Multi-Threaded"/>
             </StackPanel>
             

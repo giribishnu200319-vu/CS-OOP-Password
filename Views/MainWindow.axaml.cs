@@ -19,7 +19,6 @@ namespace password.Views
             // Subscribe to property changes
             _viewModel.PropertyChanged += (s, e) =>
             {
-                // Always update on UI thread
                 Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     switch (e.PropertyName)
@@ -33,10 +32,7 @@ namespace password.Views
                             break;
                             
                         case nameof(MainWindowViewModel.Progress):
-                            // Update progress bar
                             ProgressBar.Value = _viewModel.Progress;
-                            
-                            // Update progress text
                             ProgressText.Text = _viewModel.Progress + "% Complete";
                             break;
                             
@@ -50,6 +46,7 @@ namespace password.Views
                             
                         case nameof(MainWindowViewModel.ResultOutput):
                             ResultsTextBox.Text = _viewModel.ResultOutput;
+                            ResultsTextBox.CaretIndex = ResultsTextBox.Text?.Length ?? 0;
                             break;
                             
                         case nameof(MainWindowViewModel.IsRunning):
@@ -77,6 +74,25 @@ namespace password.Views
         private void StopBruteForceClick(object? sender, RoutedEventArgs e)
         {
             _viewModel?.StopBruteForce();
+        }
+
+        //Radio button handlers
+        private void SingleThreadRadio_Click(object? sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                _viewModel.IsMultiThreaded = false;
+                System.Console.WriteLine("Switched to: Single-Threaded");
+            }
+        }
+
+        private void MultiThreadRadio_Click(object? sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                _viewModel.IsMultiThreaded = true;
+                System.Console.WriteLine("Switched to: Multi-Threaded");
+            }
         }
 
         private void UpdateButtonStates()

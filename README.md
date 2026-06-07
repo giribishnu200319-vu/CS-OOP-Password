@@ -43,6 +43,28 @@ f.        GUI must include:
 ·         multi-thread brute force
 
 
+Project Structure
+password/
+--bin
+--Models
+---BruteForceGenerator.cs
+---PasswordGenerator.cs
+---CrackResult.cs
+---MultiThreadingBruteForceCracker.cs
+---SingleThreadingBruteForceCracker.cs
+---PasswordHasher.cs
+---PasswordValidator.cs
+---PerformanceLogger.cs
+--obj
+--ViewModels
+---MainWindowViewModel.cs
+--Views
+---MainWindow.axaml
+---MainWindow.axaml.cs
+--App.axaml
+--App.axaml.cs
+--Program.cs
+
 
 
 Commits

@@ -1,7 +1,8 @@
 using System;
 using System.Text;
+using password.Models;
 
-namespace password.Models
+namespace password.ViewModels
 {
     /// <summary>
     /// Logs and compares performance metrics between single and multi-threaded brute force.
@@ -115,15 +116,15 @@ namespace password.Models
         public string GetSummary()
         {
             if (_singleThreadResult == null && _multiThreadResult == null)
-                return "No results logged yet.";
+                return "No results logged yet.\n";
 
             var summary = new StringBuilder();
 
             if (_singleThreadResult != null)
-                summary.AppendLine(_singleThreadResult.ToString());
+                summary.AppendLine(_singleThreadResult.ToString());  // ← Explicit ToString()
 
             if (_multiThreadResult != null)
-                summary.AppendLine(_multiThreadResult.ToString());
+                summary.AppendLine(_multiThreadResult.ToString());   // ← Explicit ToString()
 
             return summary.ToString();
         }

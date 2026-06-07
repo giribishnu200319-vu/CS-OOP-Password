@@ -13,20 +13,20 @@ namespace password.Models
     public class BruteForceGenerator
     {
         private const string Characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-        private const int MinimumLength = 1;
-        private const int MaximumLength = 4;
+        private const int MinimumLength = 4;
+        private const int MaximumLength = 6;
 
         /// <summary>
-        /// Generates ALL possible combinations of characters from length 1 to 4.
+        /// Generates ALL possible combinations of characters from length 4 to 6.
         /// This is lazy-evaluated using yield return for memory efficiency.
-        /// </summary>
+        /// </summary>d
         /// <remarks>
         /// Enumeration order:
-        /// Length 1: a, b, c, ..., z, 0, 
-        /// Length 2: aa, ab, ac, ..., zz, 
-        /// ... up to length 4
+        /// Length 4: a, b, c, ..., z, 0, 
+        /// Length 5: aa, ab, ac, ..., zz, 
+        /// ... up to length 6: aaaaa, aaaab, ..., zzzzzz
         /// 
-        /// Total combinations: ~300,000 
+        /// Total combinations: 36^4 + 36^5 + 36^6 = 1,679,616 + 60,466,176 + 2,176,782,336 = 2,238,928,128 
         /// </remarks>
         public IEnumerable<string> GenerateAllCombinations()
         {

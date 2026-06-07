@@ -14,15 +14,15 @@ namespace password.Models
         private const string CharacterSet = "abcdefghijklmnopqrstuvwxyz0123456789";
         
         // Minimum password length (inclusive)
-        private const int MinimumLength = 1;
+        private const int MinimumLength = 4;
         
-        // Maximum password length (exclusive) - so actual max is 4
-        private const int MaximumLength = 4;
+        // Maximum password length (exclusive) - so actual max is 5
+        private const int MaximumLength = 6;
         
         private readonly Random _random = new Random();
         
         /// <summary>
-        /// Generates a random password with length between 1 and 3 (inclusive).
+        /// Generates a random password with length between 4 and 5 (inclusive).
         /// </summary>
         /// <returns>A randomly generated password</returns>
         public string GeneratePassword()
@@ -40,10 +40,10 @@ namespace password.Models
         }
 
         /// <summary>
-        /// Gets a random password length between 1 and 3 (inclusive).
-        /// Range is [1, 4) as specified in requirements.
+        /// Gets a random password length between 4 and 5 (inclusive).
+        /// Range is [4, 6) as specified in requirements.
         /// </summary>
-        /// <returns>A random integer between 1 and 3</returns>
+        /// <returns>A random integer between 4 and 5</returns>
         public int GetRandomLength()
         {
             return _random.Next(MinimumLength, MaximumLength);
